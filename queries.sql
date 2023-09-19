@@ -35,13 +35,12 @@ SELECT * FROM animals;
 
 -- Delete all records in the animals table
 BEGIN;
+
 DELETE FROM animals;
-SELECT * FROM animals;
--- Then roll back the transaction
-BEGIN;
-DELETE FROM animals;
+SELECT COUNT(*) FROM ANIMALS;
+
 ROLLBACK;
-SELECT * FROM animals;
+SELECT COUNT(*) FROM ANIMALS;
 
 -- Inside a transaction
 BEGIN;
