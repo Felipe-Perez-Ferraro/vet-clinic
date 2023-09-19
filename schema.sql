@@ -6,7 +6,3 @@ CREATE TABLE animals (
   neutered BOOLEAN,
   weight_kg DECIMAL(5,2)
 );
-
-ALTER TABLE vet_clinic
-ADD COLUMN species VARCHAR(30);
-SELECT * FROM vet_clinic;
