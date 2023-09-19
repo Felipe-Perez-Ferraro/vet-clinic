@@ -21,11 +21,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Vet Clinic] <a name="about-project"></a>
+# 📖 Vet Clinic <a name="about-project"></a>
 
-This project is a table where you cand find animals and their features-
+This project is a table where you cand find animals and their features
 
-**[Vet Clinic]** is a...
+**Vet Clinic** is a...
 
 ## 🛠 Built With <a name="built-with"></a>
 
