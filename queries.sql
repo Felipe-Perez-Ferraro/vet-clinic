@@ -8,6 +8,11 @@ SELECT * FROM vet_clinic WHERE name != 'Gabumon';
 SELECT * FROM vet_clinic WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 
+-- Added the species column
+ALTER TABLE vet_clinic
+ADD COLUMN species VARCHAR(30);
+SELECT * FROM vet_clinic;
+
 -- Update the animals table by setting the species column to unspecified
 BEGIN;
 UPDATE vet_clinic
