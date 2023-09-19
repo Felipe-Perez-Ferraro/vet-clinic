@@ -63,3 +63,30 @@ WHERE weight_kg < 0;
 COMMIT;
 
 SELECT * FROM vet_clinic;
+
+-- Write queries to answer the following questions
+-- How many animals are there?
+SELECT COUNT(*) AS animals_count FROM vet_clinic;
+
+-- How many animals have never tried to escape?
+SELECT COUNT(*) AS animals_count FROM vet_clinic 
+WHERE escape_attempts = 0;
+
+-- What is the average weight of animals?
+SELECT AVG(weight_kg) AS average_weight
+FROM vet_clinic;
+
+-- Who escapes the most, neutered or not neutered animals?
+SELECT neutered, SUM(escape_attempts) AS total_escapes
+FROM vet_clinic
+GROUP BY neutered
+ORDER BY total_escapes DESC;
+
+-- What is the minimum and maximum weight of each type of animal?
+SELECT species, MIN(weight_kg), MAX(weight_kg) FROM vet_clinic
+GROUP BY species;
+
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT species, AVG(escape_attempts) AS total_scapes_average FROM vet_clinic
+WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
+GROUP BY species;
