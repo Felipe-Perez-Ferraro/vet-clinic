@@ -37,10 +37,10 @@ SELECT * FROM animals;
 BEGIN;
 
 DELETE FROM animals;
-SELECT COUNT(*) FROM ANIMALS;
+SELECT COUNT(*) FROM animals;
 
 ROLLBACK;
-SELECT COUNT(*) FROM ANIMALS;
+SELECT COUNT(*) FROM animals;
 
 -- Inside a transaction
 BEGIN;
