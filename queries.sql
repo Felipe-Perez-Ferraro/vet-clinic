@@ -89,3 +89,52 @@ GROUP BY species;
 SELECT species, AVG(escape_attempts) AS total_scapes_average FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
+
+-- Remove column species
+ALTER TABLE animals
+DROP COLUMN species;
+-- Add column species_id which is a foreign key referencing species table
+ALTER TABLE animals
+ADD COLUMN species_id INTEGER REFERENCES species(id);
+-- Add column owner_id which is a foreign key referencing the owners table
+ALTER TABLE animals
+ADD COLUMN owners_id INTEGER REFERENCES owners(id);
+
+-- Write queries (using JOIN) to answer the following questions:
+-- What animals belong to Melody Pond?
+SELECT a.name AS animal_name
+FROM animals AS a
+JOIN owners AS o ON a.owners_id = o.id
+WHERE o.full_name = 'Melody Pond';
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT a.name AS animal_type
+FROM animals AS a
+JOIN species AS s ON a.species_id = s.id
+WHERE s.name = 'Pokemon';
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT o.full_name AS owner_name, a.name AS animal_name
+FROM owners AS o
+LEFT JOIN animals AS a ON a.owners_id = o.id
+ORDER BY o.full_name, a.name;
+-- How many animals are there per species?
+SELECT s.name, COUNT(*) AS species_qty
+FROM species AS s
+JOIN animals AS a ON s.id = a.species_id
+GROUP BY s.name;
+-- List all Digimon owned by Jennifer Orwell.
+SELECT o.full_name AS owner_name, a.name AS digimon_name
+FROM owners AS o
+LEFT JOIN animals AS a ON a.owners_id = o.id
+WHERE o.full_name = 'Jennifer Orwell' AND a.species_id = 2;
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT o.full_name AS owner_name, a.name AS digimon_name
+FROM owners AS o
+LEFT JOIN animals AS a ON a.owners_id = o.id
+WHERE o.full_name = 'Dean Winchester' AND escape_attempts = 0;
+-- Who owns the most animals?
+SELECT o.full_name, COUNT(*) AS animals_qty
+FROM owners AS o
+JOIN animals AS a ON a.owners_id = o.id
+GROUP BY o.full_name
+ORDER BY 2 DESC
+LIMIT 1;

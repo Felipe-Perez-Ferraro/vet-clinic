@@ -4,14 +4,13 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
+  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -45,14 +44,6 @@ This project is a table where you cand find animals and their features
 - **Easy to use**
 - **Readable**
 - **Good use of gitflow**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-No live demo yet.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,7 +116,7 @@ You can't deploy the project yet.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Felipe-Perez-Ferraro/vet-clinic/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
