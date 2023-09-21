@@ -160,18 +160,19 @@ LEFT JOIN specializations AS sp ON v.id = sp.vet_id
 LEFT JOIN species AS s ON sp.species_id = s.id
 ORDER BY v.name, s.name;
 -- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
-SELECT ve.name, vi.visit_date
+SELECT a.name, ve.name, vi.visit_date
 FROM visits AS vi
+LEFT JOIN animals AS a ON a.id = vi.animal_id
 LEFT JOIN vets AS ve ON vi.vet_id = ve.id
 WHERE ve.name = 'Stephanie Mendez' 
 AND vi.visit_date BETWEEN '2020-04-1' AND '2020-08-30'
-ORDER BY ve.name, vi.visit_date
+ORDER BY a.name, ve.name, vi.visit_date;
 -- What animal has the most visits to vets?
-SELECT a.name, MAX(vi.vet_id) 
-FROM visits AS vi
-LEFT JOIN vets AS ve ON vi.vet_id = ve.id
-LEFT JOIN animals AS a ON ve.id = a.id
-GROUP BY a.name
+SELECT animals.name, count(animals.name)
+FROM visits
+LEFT JOIN animals ON animals.id = visits.animal_id
+GROUP BY animals.name
+ORDER BY count(animals.name) DESC
 LIMIT 1;
 -- Who was Maisy Smith's first visit?
 SELECT a.name, MIN(vi.visit_date), ve.name
@@ -183,12 +184,11 @@ GROUP BY a.name, ve.name
 ORDER BY 2
 limit 1;
 -- Details for most recent visit: animal information, vet information, and date of visit.
-SELECT a.name, ve.name, MIN(vi.visit_date) AS recent_visit
-FROM visits AS vi
-JOIN animals AS a ON a.id = vi.animal_id
-JOIN vets AS ve ON ve.id = vi.vet_id
-GROUP BY a.name, ve.name
-ORDER BY 3 DESC
+SELECT animals.*, vets.*, visits.visit_date
+FROM visits
+LEFT JOIN animals ON animals.id = visits.animal_id
+LEFT JOIN vets ON vets.id = visits.vet_id
+ORDER BY visits.visit_date DESC
 LIMIT 1;
 -- How many visits were with a vet that did not specialize in that animal's species?
 SELECT COUNT(*) AS total_visits
@@ -210,4 +210,4 @@ WITH VetSpeciesVisits AS (
     LIMIT 1
 )
 SELECT specialization
-FROM VetSpeciesVisits;
+FROM VetSpeciesVisits;  
