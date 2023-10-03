@@ -12,7 +12,8 @@ CREATE TABLE animals (
 CREATE TABLE owners (
   id SERIAL PRIMARY KEY,
   full_name VARCHAR(30),
-  age INTEGER
+  age INTEGER,
+  email VARCHAR(120)
 );
 
 CREATE TABLE species (
@@ -36,6 +37,11 @@ CREATE TABLE specializations (
 CREATE TABLE visits (
   id SERIAL PRIMARY KEY,
   animal_id INTEGER REFERENCES animals(id),
-  vet_id INTEGER REFERENCES vets(id)
+  vet_id INTEGER REFERENCES vets(id),
   visit_date DATE
 );
+
+-- Week 2 performance
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
