@@ -222,8 +222,12 @@ SELECT specialization
 FROM VetSpeciesVisits;  
 
 -- Week 2
+-- Before improved the queries speed
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
 
---Improve speed running the next queries at less 4 times
+-- After improved speed running the next queries at less 4 times
 EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
 EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
 EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
