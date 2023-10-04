@@ -47,6 +47,7 @@ BEGIN;
 -- Delete all animals born after Jan 1st, 2022.
 DELETE FROM animals
 WHERE date_of_birth > '2022-01-01';
+
 -- Create a savepoint for the transaction
 SAVEPOINT update_wheight;
 -- Update all animals' weight to be their weight multiplied by -1
@@ -54,10 +55,12 @@ UPDATE animals
 SET weight_kg = weight_kg * -1;
 -- Rollback to the savepoint
 ROLLBACK TO SAVEPOINT update_wheight;
+
 -- Update all animals' weights that are negative to be their weight multiplied by -1
 UPDATE animals
 SET weight_kg = weight_kg * -1
 WHERE weight_kg < 0;
+
 -- Commit transaction
 COMMIT;
 
@@ -106,31 +109,37 @@ SELECT a.name AS animal_name
 FROM animals AS a
 JOIN owners AS o ON a.owners_id = o.id
 WHERE o.full_name = 'Melody Pond';
+
 -- List of all animals that are pokemon (their type is Pokemon).
 SELECT a.name AS animal_type
 FROM animals AS a
 JOIN species AS s ON a.species_id = s.id
 WHERE s.name = 'Pokemon';
+
 -- List all owners and their animals, remember to include those that don't own any animal.
 SELECT o.full_name AS owner_name, a.name AS animal_name
 FROM owners AS o
 LEFT JOIN animals AS a ON a.owners_id = o.id
 ORDER BY o.full_name, a.name;
+
 -- How many animals are there per species?
 SELECT s.name, COUNT(*) AS species_qty
 FROM species AS s
 JOIN animals AS a ON s.id = a.species_id
 GROUP BY s.name;
+
 -- List all Digimon owned by Jennifer Orwell.
 SELECT o.full_name AS owner_name, a.name AS digimon_name
 FROM owners AS o
 LEFT JOIN animals AS a ON a.owners_id = o.id
 WHERE o.full_name = 'Jennifer Orwell' AND a.species_id = 2;
+
 -- List all animals owned by Dean Winchester that haven't tried to escape.
 SELECT o.full_name AS owner_name, a.name AS digimon_name
 FROM owners AS o
 LEFT JOIN animals AS a ON a.owners_id = o.id
 WHERE o.full_name = 'Dean Winchester' AND escape_attempts = 0;
+
 -- Who owns the most animals?
 SELECT o.full_name, COUNT(*) AS animals_qty
 FROM owners AS o
