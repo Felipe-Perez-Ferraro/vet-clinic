@@ -94,8 +94,15 @@ You can't deploy the project yet.
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/Felipe-Perez-Ferraro)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/felipe-perez-ferraro-6b9358218/)
+- GitHub: [@Felipe Perez Ferraro](https://github.com/Felipe-Perez-Ferraro)
+
+👤 **Author2**
+
+- GitHub: [@Ulises Cappa](https://github.com/ulises2607)
+
+👤 **Author3**
+
+- GitHub: [@Pablo Thasi](https://github.com/thasipablo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
