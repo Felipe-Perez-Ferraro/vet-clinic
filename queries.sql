@@ -156,18 +156,21 @@ LEFT JOIN vets AS ve ON vi.vet_id = ve.id
 LEFT JOIN animals AS a ON ve.id = a.id
 WHERE ve.name = 'William Tatcher'
 GROUP BY a.name;
+
 -- How many different animals did Stephanie Mendez see?
 SELECT ve.name, COUNT(*) AS qty_animals_visited
 FROM visits AS vi
 LEFT JOIN vets AS ve ON vi.vet_id = ve.id
 WHERE ve.name = 'Stephanie Mendez'
 GROUP BY ve.name;
+
 -- List all vets and their specialties, including vets with no specialties.
 SELECT v.name AS vet_name, s.name AS specialization
 FROM vets AS v
 LEFT JOIN specializations AS sp ON v.id = sp.vet_id
 LEFT JOIN species AS s ON sp.species_id = s.id
 ORDER BY v.name, s.name;
+
 -- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
 SELECT a.name, ve.name, vi.visit_date
 FROM visits AS vi
@@ -176,6 +179,7 @@ LEFT JOIN vets AS ve ON vi.vet_id = ve.id
 WHERE ve.name = 'Stephanie Mendez' 
 AND vi.visit_date BETWEEN '2020-04-1' AND '2020-08-30'
 ORDER BY a.name, ve.name, vi.visit_date;
+
 -- What animal has the most visits to vets?
 SELECT animals.name, count(animals.name)
 FROM visits
@@ -183,6 +187,7 @@ LEFT JOIN animals ON animals.id = visits.animal_id
 GROUP BY animals.name
 ORDER BY count(animals.name) DESC
 LIMIT 1;
+
 -- Who was Maisy Smith's first visit?
 SELECT a.name, MIN(vi.visit_date), ve.name
 FROM visits AS vi
@@ -192,6 +197,7 @@ WHERE ve.name = 'Maisy Smith'
 GROUP BY a.name, ve.name
 ORDER BY 2
 limit 1;
+
 -- Details for most recent visit: animal information, vet information, and date of visit.
 SELECT animals.*, vets.*, visits.visit_date
 FROM visits
@@ -199,6 +205,7 @@ LEFT JOIN animals ON animals.id = visits.animal_id
 LEFT JOIN vets ON vets.id = visits.vet_id
 ORDER BY visits.visit_date DESC
 LIMIT 1;
+
 -- How many visits were with a vet that did not specialize in that animal's species?
 SELECT COUNT(*) AS total_visits
 FROM visits AS v
@@ -206,6 +213,7 @@ JOIN animals AS a ON v.animal_id = a.id
 JOIN vets AS ve ON v.vet_id = ve.id
 LEFT JOIN specializations AS s ON ve.id = s.vet_id
 WHERE s.species_id IS NULL OR s.species_id != a.species_id;
+
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
 WITH VetSpeciesVisits AS (
     SELECT s.name AS specialization, COUNT(*) AS visit_count
