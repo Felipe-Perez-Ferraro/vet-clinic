@@ -72,7 +72,9 @@ Installing postgreSQL
 
 ### Usage
 
-To run the project, execute the following command:
+To run the project:
+- Open PGAdmin and create a new server with your account
+- Then copy and paste the data from schema.sql and data.sql
 
 
 ### Run tests
@@ -94,8 +96,15 @@ You can't deploy the project yet.
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/Felipe-Perez-Ferraro)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/felipe-perez-ferraro-6b9358218/)
+- GitHub: [@Felipe Perez Ferraro](https://github.com/Felipe-Perez-Ferraro)
+
+👤 **Author2**
+
+- GitHub: [@Ulises Cappa](https://github.com/ulises2607)
+
+👤 **Author3**
+
+- GitHub: [@Pablo Thasi](https://github.com/thasipablo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -132,7 +141,7 @@ If you like this project please give it a star!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank...
+I would like to thank To Microverse to make us become better with our code by bringing us the information we need
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
